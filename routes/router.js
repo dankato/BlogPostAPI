@@ -1,9 +1,12 @@
-const express = require('express');
+const {Router} = require('express');
 const jsonParser = require('body-parser').json();
-const {BlogPosts} = require('./models.js');
+const {BlogPosts} = require('../models');
 
+const router = Router();
 
-app.use(jsonParser);
+BlogPosts.create('milk','test','Sandy');
+
+router.use(jsonParser);
 // jsonParser is a piece of middleware that we supply as a second argument to our route handler below.
 
 
@@ -45,7 +48,7 @@ router.delete('/blog-posts/:id', (req, res) => {
   res.status(204).end();
 });
 
-router.put('/:id', jsonParser, (req, res) => {
+router.put('/blog-posts/:id', jsonParser, (req, res) => {
     // Creating PUT endpoints, 1.4.5
     // using the jsonParser middleware to parse the request body.
   const requiredFields = ['id', 'title', 'content', 'author', 'publishDate'];
@@ -80,5 +83,5 @@ router.put('/:id', jsonParser, (req, res) => {
   res.sendStatus(204);
 });
 
-// this file is required when exporting basically.
+// what is returned from this specific file, which is the results from Router();
 module.exports = router;
