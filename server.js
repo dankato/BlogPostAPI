@@ -7,8 +7,8 @@ const app = express();
 const router = require('./routes/router');
 
 app.use(morgan('common'));
-app.use('/routes', router);
-
+app.use('/', router);
+console.log(router.stack);
 
 // dummy posts
 BlogPosts.create('horse','test','saule');

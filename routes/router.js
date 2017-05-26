@@ -1,17 +1,17 @@
+'use strict';
+
 const {Router} = require('express');
 const jsonParser = require('body-parser').json();
 const {BlogPosts} = require('../models');
 
 const router = Router();
 
-BlogPosts.create('milk','test','Sandy');
-
 router.use(jsonParser);
 // jsonParser is a piece of middleware that we supply as a second argument to our route handler below.
 
 
 router.get('/blog-posts', (req, res) => {
-    res.json(BlogPosts.get());
+  res.json(BlogPosts.get());
 });
 // When a request is made to /blog-posts, our app responds by serializing 
 // (that is, transforming to JSON) the data returned by BlogPosts.get(), 
